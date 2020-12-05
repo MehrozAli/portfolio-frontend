@@ -42,9 +42,9 @@
 
     <div class="hero">
       <div class="content">
-        <h1>Beautifully Crafted Web Experiences</h1>
+        <h1 class="stagger1">Beautifully Crafted Web Experiences</h1>
 
-        <div class="meet">
+        <div class="meet stagger1">
           <span>&#8595;</span>
           <p>Meet Gary Simon</p>
         </div>
@@ -301,5 +301,76 @@
         <a href="#"><img src="images/fretty.jpg" alt="Fretty" /></a>
       </div>
     </section>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"
+      integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ=="
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"
+      integrity="sha512-wK2NuxEyN/6s53M8G7c6cRUXvkeV8Uh5duYS06pAdLq4ukc72errSIyyGQGYtzWEzvVGzGSWg8l79e0VkTJYPw=="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+      var tl = gsap.timeline();
+
+      tl.from(".content", {
+        y: "-30%",
+        opacity: "0",
+        duration: 2,
+        ease: Power4.easeOut,
+      });
+
+      tl.from(
+        ".stagger1",
+        {
+          opacity: 0,
+          y: -50,
+          stagger: 0.3,
+          ease: Power4.easeOut,
+          duration: 2,
+        },
+        "-=1.5"
+      );
+
+      tl.from(
+        ".hero-design",
+        { opacity: 0, y: 50, ease: Power4.easeOut, duration: 1 },
+        "-=2"
+      );
+
+      gsap.from(".square-anim", {
+        stagger: 0.2,
+        scale: 0.1,
+        duration: 1,
+        ease: Back.easeOut.config(1.7),
+      });
+
+      gsap.from(".transition2", {
+        ScrollTrigger: {
+          trigger: ".transition2",
+          start: "top bottom",
+        },
+        y: 50,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.3,
+      });
+
+      gsap.from(".transition3", {
+        ScrollTrigger: {
+          trigger: ".transition2",
+          start: "top bottom",
+        },
+        y: 50,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.6,
+      });
+    </script>
   </body>
 </html>
